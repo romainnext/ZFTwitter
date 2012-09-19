@@ -1,12 +1,12 @@
 
 <?php if(empty($this->tweets)) : ?>
-<p>Pas de tweets</p>
+    <p>Pas de tweets</p>
 <?php endif; ?>
 
 <?php foreach ($this->tweets as $tweet) : ?>
-<blockquote>
-  <p><?php echo $this->escape($tweet->message); ?></p>
-  <small><?php echo $this->escape($tweet->membre->login); ?>
-      (à <?php echo $this->date($tweet->horodatage, 'HH'); ?>h<?php echo $this->date($tweet->horodatage, 'mm'); ?> le <?php echo $this->date($tweet->horodatage, 'dd'); ?>/<?php echo $this->date($tweet->horodatage, 'MM'); ?>/<?php echo $this->date($tweet->horodatage, 'YYYY'); ?>)</small>
-</blockquote>
+    <blockquote>
+        <p><?php echo $this->escape($tweet->message); ?></p>
+        <small><?php echo $this->escape($tweet->membre->login); ?>
+            (à <?php echo $this->date($tweet->horodatage, 'HH'); ?>h<?php echo $this->date($tweet->horodatage, 'mm'); ?> le <?php echo $this->date($tweet->horodatage, 'dd'); ?>/<?php echo $this->date($tweet->horodatage, 'MM'); ?>/<?php echo $this->date($tweet->horodatage, 'YYYY'); ?>)</small>
+    </blockquote>
 <?php endforeach; ?>
