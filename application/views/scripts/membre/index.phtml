@@ -1,0 +1,29 @@
+<h1>Liste des membres</h1>
+
+<?php if(isset($this->msgSucces)) : ?>
+<div class="alert alert-success">
+    <?php echo $this->msgSucces; ?>
+</div>
+<?php endif; ?>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Membre 
+        </th>
+        <th>
+            Tweets
+        </th>
+    </tr>
+    <?php foreach($this->membres as $m) : ?>
+    <tr>
+        <td>
+            <?php echo $this->escape($m->login); ?>
+        </td>
+        <td>
+            <a href="<?php echo $this->url(array('controller' => 'tweet', 'membre' => $m->login)); ?>">Consulter</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>

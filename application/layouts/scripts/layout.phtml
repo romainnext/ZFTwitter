@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <?php echo $this->headMeta(); ?>
+
+        <link rel="stylesheet" href="<?php echo $this->baseUrl(); ?>/css/bootstrap.css">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), null, true); ?>">Next Twitter</a>
+                    <ul class="nav">
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), null, true); ?>">
+                                <i class="icon icon-white icon-home"></i>
+                                Tous les tweets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'membre', 'action' => 'index'), null, true); ?>">
+                                <i class="icon icon-white icon-user"></i>
+                                Tous les membres
+                            </a>
+                        </li>
+                        <?php if(Zend_Auth::getInstance()->getStorage()->isEmpty()) : ?>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'membre', 'action' => 'ajouter'), null, true); ?>">
+                                <i class="icon icon-white icon-plus"></i>
+                                Inscription
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'index'), null, true); ?>">
+                                <i class="icon icon-white icon-play"></i>
+                                Connexion
+                            </a>
+                        </li>
+                        <?php else : ?>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'tweet', 'action' => 'poster'), null, true); ?>">
+                                <i class="icon icon-white icon-pencil"></i>
+                                Poster un tweet
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'tweet', 'action' => 'index', 'membre' => Zend_Auth::getInstance()->getStorage()->read()->getLogin())); ?>">
+                                <i class="icon icon-white icon-list"></i>
+                                Mes tweets
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('controller' => 'login', 'action' => 'deconnexion'), null, true); ?>">
+                                <i class="icon icon-white icon-stop"></i>
+                                Deconnexion
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+        <?php echo $this->layout()->content; ?>
+    </body>
+</html>
